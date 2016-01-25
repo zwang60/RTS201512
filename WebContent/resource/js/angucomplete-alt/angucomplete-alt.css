@@ -1,0 +1,82 @@
+.angucomplete-holder {
+    position: relative;
+    text-align: left;
+    width: 300px;
+    vertical-align: top;
+    font-family: 'Kreon', serif;
+    font-weight: bold;
+    color: #0099FF;
+}
+
+.angucomplete-dropdown {
+    left: 0;
+	border-left: 1px solid #888;
+	border-right: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-color: #ececec;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 2px;
+	width: 100%;
+	padding: 6px;
+	cursor: pointer;
+	z-index: 9999;
+	position: absolute;
+	/*top: 32px;
+    left: 0px;
+    */
+	margin-top: -6px;
+	background-color: #ffffff;
+	font-weight: bold;
+	color: #0099FF;
+}
+
+.angucomplete-searching {
+    color: #990033;
+    font-size: 14px;
+    background-color: #E2E2E2;
+}
+
+.angucomplete-description {
+    font-size: 14px;
+    background-color: #E2E2E2;
+    color: #990033;
+}
+
+.angucomplete-row {
+    padding: 5px;
+    color: #0099FF;
+    margin-bottom: 4px;
+    clear: both;
+}
+
+.angucomplete-selected-row {
+    background-color: lightblue;
+    color: #330033;
+}
+
+.angucomplete-image-holder {
+    padding-top: 2px;
+    float: left;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.angucomplete-image {
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    border-color: #ececec;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.angucomplete-image-default {
+    /* Add your own default image here
+     background-image: url('/assets/default.png');
+    */
+    background-position: center;
+    background-size: contain;
+    height: 34px;
+    width: 34px;
+}

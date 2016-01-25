@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>     
+ 	<class name="com.mercury.beans.CreditCard" table="creditcard">
+		<id name="cardId" column="card_id">
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="user" column="users_id" class="com.mercury.beans.User" fetch="select" not-null="true" lazy="false"></many-to-one>
+        <property name="cardNo" column="card_no" not-null="true"/>
+        <property name="paymentBrand" column="payment_brand" not-null="true"/>
+        <property name="firstName" column="first_name"></property> 
+        <property name="lastName" column="last_name" />
+        <property name="expiration" column="expiration_date" not-null="true"/>
+        <property name="billingAddr" column="billing_address"/>
+        <property name="city" column="city"/>
+        <property name="zipCode" column="zip_code"/>
+        <property name="state" column="state"/>
+    </class>
+</hibernate-mapping>

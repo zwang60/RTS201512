@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+
+	<sec:http auto-config="true">
+    	<sec:intercept-url pattern="/member/*" access="ROLE_USER"/>
+		<sec:intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
+    	<sec:form-login 
+        	login-page="/login.html"
+        	authentication-failure-url="/login.html?login_error=1" 
+        	authentication-success-handler-ref="loginHandler"
+        />
+        
+        <sec:logout logout-success-url="/main1.html"/>     
+	</sec:http>
+	<sec:authentication-manager alias="authenticationManager">
+        <sec:authentication-provider user-service-ref="customUserDetailsService"/>
+    </sec:authentication-manager>
+    
+    <bean id="loginHandler" class="com.mercury.handler.LoginHandler">
+    </bean>
+    
+    <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" /> 
+    
+
+</beans>

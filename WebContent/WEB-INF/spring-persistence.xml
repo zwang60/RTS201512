@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	<bean id="personDao" class="com.mercury.dao.PersonDaoImpl">
+    	<property name="sessionFactory">
+    		<ref local="sessionFactory"></ref>
+    	</property>
+    	
+    </bean>
+    
+ 	<bean id="stationDao" class="com.mercury.dao.StationDaoImpl">
+    	<property name="sessionFactory">
+    		<ref local="sessionFactory"></ref>
+    	</property>
+    </bean>   
+    
+    <bean id="trainDao" class="com.mercury.dao.TrainDaoImpl">
+    	<property name="sessionFactory">
+    		<ref local="sessionFactory"></ref>
+    	</property>
+    </bean>
+    
+    <bean id="transitDao" class="com.mercury.dao.TransitDaoImpl">
+     	<property name="sessionFactory">
+    		<ref local="sessionFactory"></ref>
+    	</property>
+    </bean>
+    
+    <bean id="ticketDao" class="com.mercury.dao.TicketDaoImpl">
+     	<property name="sessionFactory">
+    		<ref local="sessionFactory"></ref>
+    	</property>
+    </bean>
+
+
+    
+    <bean id="creditCardDao" class="com.mercury.dao.CreditCardDaoImpl">
+    	<property name="sessionFactory">
+    		<ref local="sessionFactory"></ref>
+    	</property>
+   </bean>
+    
+    <bean id="orderDao" class="com.mercury.dao.OrderDaoImpl">
+    	<property name="sessionFactory">
+    		<ref local="sessionFactory"></ref>
+    	</property>
+    </bean>
+    
+    
+
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<property name="jndiName" value="java:comp/env/jdbc/myoracle" />
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> 
+		<property name="dataSource">
+			<ref bean="dataSource"/>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/mercury/mappings/User.hbm.xml</value>
+				<value>com/mercury/mappings/Station.hbm.xml</value>
+				<value>com/mercury/mappings/Train.hbm.xml</value>
+				<value>com/mercury/mappings/Transit.hbm.xml</value>
+				<value>com/mercury/mappings/Ticket.hbm.xml</value>
+				<value>com/mercury/mappings/CreditCard.hbm.xml</value>
+				<value>com/mercury/mappings/Order.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>

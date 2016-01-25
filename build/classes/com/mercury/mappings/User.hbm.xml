@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>     
+ 	<class name="com.mercury.beans.UserRole" table="User_roles">
+		<id name="userRoleId" column="user_role_id">
+			<generator class="increment"></generator>
+		</id>    
+		<property name="authority" column="authority"></property>
+    </class>
+    
+    <class name="com.mercury.beans.User" table="Users" >    
+    	<id name="userId" column="users_id">
+    		<generator class="increment"></generator> 
+    	</id>     
+        <property name="firstName" column="first_name" not-null="true"/>
+        <property name="lastName" column="last_name" not-null="true"/>
+        <property name="email" column="email" not-null="true"></property> 
+        <property name="gender" column="gender"/>
+        <property name="age" column="age"/>
+        <property name="password" column="password" not-null="true"/>
+        <property name="address" column="address"/>
+        <property name="city" column="city"/>
+        <property name="zipCode" column="zip_code"/>
+        <property name="state" column="state"/>
+        <property name="activation" column="activation"/>
+        <property name="enable" column="enable"/>
+        <many-to-one name="role" column="role" class="com.mercury.beans.UserRole" fetch="select" not-null="true" lazy="false"></many-to-one>
+    </class>
+</hibernate-mapping>

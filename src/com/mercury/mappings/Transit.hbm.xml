@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>     
+ 	<class name="com.mercury.beans.Transit" table="Transit">
+		<id name="transitNo" column="transit_no">
+			<generator class="increment"></generator>
+		</id>    
+	  	<many-to-one name="train" column="train_no" class="com.mercury.beans.Train" fetch="select" not-null="true" lazy="false"></many-to-one>
+        <property name="seqNo" column="seq_no" not-null="true"/>
+	  	<many-to-one name="station" column="station_no" class="com.mercury.beans.Station" fetch="select" not-null="true" lazy="false"></many-to-one>
+        <property name="arrivalTime" type="timestamp" column="arrival_time" not-null="true"></property> 
+        <property name="stopDuration" column="stop_duration"/>
+        <property name="price" column="price"/>
+    </class>
+</hibernate-mapping>

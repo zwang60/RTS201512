@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+		
+	<bean id="railwayService" class="com.mercury.service.RailwayService">
+		<property name="sd" ref="stationDao"/>
+		<property name="td" ref="trainDao"/>
+		<property name="transitd" ref="transitDao"/>
+		<property name="od" ref="orderDao"/>
+    </bean>
+    
+    <bean id="customUserDetailsService" class="com.mercury.service.CustomUserDetailsService">
+    	<property name="pd" ref="personDao"/>
+    	<property name="ccd" ref="creditCardDao"/>
+    	<property name="od" ref="orderDao"/>
+    </bean>
+		
+	<bean id="ticketContainer" class="com.mercury.service.TicketContainer">
+		<property name="trainDao" ref="trainDao"/>
+		<property name="ticketDao" ref="ticketDao"/>
+    </bean>	
+    
+    <bean id="orderService" class="com.mercury.service.OrderService">
+		<property name="od" ref="orderDao"/>
+		<property name="ticketd" ref="ticketDao"/>
+		<property name="ccd" ref="creditCardDao"/>
+    </bean>	
+	
+</beans>
+		
